@@ -6,7 +6,7 @@
 		
 		// returns the home page with data from a function
 		case "GET/":
-			data = new models.home().main(req);
+			data = application.home.main(req); // for speed, model is cached in the application scope
 			body = include_view("/home.cfm");
 			include_layout("/main.cfm");
 			break;
