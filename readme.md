@@ -113,7 +113,7 @@ Views are HTML that can be included in each controller. For example: body = incl
 
 The view accepts structure data from the model using a data scope, for example data.title, data.users, data.address etc.
 
-To make it work, all content in a view must be inside <CFOUTPUT> tags.
+To make it work, all content in a view must be inside `<CFOUTPUT>` tags.
 
 Finally, the view is returned as a variable named body.
 
@@ -124,7 +124,7 @@ Layouts are also HTML, and can be included in each controller. For example: incl
 
 The layout accepts the body variable from the view as well as meta data.
 
-All content in a layout must be inside <CFOUTPUT> tags.
+All content in a layout must be inside `<CFOUTPUT>` tags.
 
 Finally, the layout is returned to the client.
 
