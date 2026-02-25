@@ -1,0 +1,51 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	font-size: 100%;
+	outline: 0;
+	vertical-align: baseline;
+	font-weight: normal;
+	line-height: normal;
+	font-style: normal;
+	list-style: none;
+	text-decoration: none;
+	}
+
+:root{
+	--white:#ffffff;
+	--black:#242424;
+	
+	--gray0:#f9fafb;
+	--gray1:#f3f4f6;
+	--gray2:#e5e7eb;
+	--gray3:#d1d5dc;
+	--gray4:#9ca3af;
+	--gray5:#6b7280;
+	--gray6:#4b5563;
+	--gray7:#374151;
+	--gray8:#1f2937;
+	--gray9:#111827;
+
+	--system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	
+	}
+	
+
+html{
+	font-family: 'Roboto', sans-serif;
+	color:var(--black);
+	padding:20px;
+	}
+
+
+h1{
+	font-size: 30px;
+	font-weight: 700;
+	margin:12px 0;
+	}
+	
+
+
+
+
