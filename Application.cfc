@@ -121,7 +121,7 @@ component{
 
 
 	// gets a segment of a URL based on the position.
-	// For example to find "id" from /action/id/items, use get_urlpath(2)
+	// For example to find "12345" from /item/12345/departments, use get_urlpath(2)
 	function get_urlpath(id){
 		if( listlen(cgi.path_info,"/") >= id ){
 			return listgetat( cgi.path_info, id, "/" );
