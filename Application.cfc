@@ -18,7 +18,7 @@ component{
 	// use this to cache application variables
 	public boolean function onApplicationStart(){
 		application.home = new models.home();
-		application.about = new models.about();
+		application.hello = new models.hello();
 		return true;
 	}
 
