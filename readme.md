@@ -62,7 +62,7 @@ For example: `RewriteRule ^/(.*)$ /index.cfm/$1 [L];`
 The simplest way is using CommandBox by Ortus. It gives you an option to set url rewrite to true.
 
 
-## Structure
+### Structure
 
 ```
 FastCFML
