@@ -37,6 +37,8 @@
 
 		default:
 			header statusCode = 404;
+			body = include_view("/_404.cfm");
+			include_layout("/main.cfm");
 			break;
 	};
 
