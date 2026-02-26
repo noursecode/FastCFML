@@ -12,7 +12,7 @@
 			break;
 
 
-		// returns a hello world page with a URL path variable, for example /hello/bob
+		// returns a hello world page with a URL path variable, for example /hello/Sam
 		case "GET/hello":
 			request.p2 = get_urlpath(2);
 			data = new models.hello().main(request.p2);
