@@ -1,6 +1,6 @@
 # FastCFML
 
-The minimal CFML framework to build apps, sites, and APIs.
+The minimal CFML framework to build apps, sites, APIs, and microservices.
 
 Designed with two goals in mind:
 
