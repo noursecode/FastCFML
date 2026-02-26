@@ -6,7 +6,7 @@ component{
 	
 	function main(){
 		var data = {
-			'title' = 'FastCFML'
+			'title' = 'Welcome to FastCFML'
 		}
 		return data;
 	}

@@ -11,8 +11,15 @@
 </head>
 <body>
 <bd>
-<a href="#root#/">Home</a> | <a href="#root#/hello">Hello</a> | <a href="#root#/jsontest" id="ex">JSON test</a>
+<nav>
+    <a href="#root#/">Home</a>
+    <a href="#root#/hello">Hello</a>
+    <a href="#root#/jsontest" id="ex">JSON test</a>
+</nav>
+<div class="container">
 #body#
+</div>
+<footer>&copy; #year(now())# FastCFML</footer>
 </bd>
 <script src="#root#/assets/js/main.js"></script>
 </body>
