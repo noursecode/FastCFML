@@ -69,9 +69,9 @@ FastCFML
     │
     ├── Application.cfc		# the framework
     │
-    ├── index.cfm			# the router
+    ├── index.cfm			# the router with controllers
     │
-    ├── models				# data from databases, logic functions
+    ├── models				# data from databases, business logic, API connections
     │   ├── model1.cfc		
     │   └── model2.cfc
     │
