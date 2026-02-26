@@ -62,6 +62,28 @@ For example: `RewriteRule ^/(.*)$ /index.cfm/$1 [L];`
 The simplest way is using CommandBox by Ortus. It gives you an option to set url rewrite to true.
 
 
+## Structure
+
+```
+FastCFML
+    │
+    ├── Application.cfc		# the framework
+    │
+    ├── index.cfm			# the router
+    │
+    ├── models				# logic
+    │   ├── model1.cfc		
+    │   └── model2.cfc
+    │
+    ├── views				# html snippet
+    │   ├── view1.cfm
+    │   └── view2.cfm
+    │
+    └── layouts				# html layout
+        ├── layout1.cfm
+        └── layout2.cfm
+```
+
 ## FastCFML Routing
 
 The index.cfm file becomes the main router, each route includes a request verb and action, for example GET/hello
