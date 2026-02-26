@@ -71,15 +71,15 @@ FastCFML
     │
     ├── index.cfm			# the router
     │
-    ├── models				# logic
+    ├── models				# data from databases, logic functions
     │   ├── model1.cfc		
     │   └── model2.cfc
     │
-    ├── views				# html snippet
+    ├── views				# html snippets
     │   ├── view1.cfm
     │   └── view2.cfm
     │
-    └── layouts				# html layout
+    └── layouts				# html referenced with css and client javascript
         ├── layout1.cfm
         └── layout2.cfm
 ```
