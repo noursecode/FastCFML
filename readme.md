@@ -1,65 +1,43 @@
 # FastCFML
 
-The minimal CFML framework to build apps, sites, APIs, and microservices.
+The minimal framework for building things using CFML (ColdFusion Markup Language).
 
-Designed with two goals in mind:
+Build modern MVC applications without the overhead of larger framework libraries or vendor lock-in.
 
-- Build stuff faster
-- Build stuff that runs faster
-
-
-## The problem
-
-We already have great frameworks in the CFML world such as FW/1, ColdBox, and Wheels. All of which were written by brilliant people — the giants of the industry.
-
-FastCFML isn't trying to be better or smarter, it is trying to be faster and easier.
-
-For example, when building a microservice, website, or app, it might make sense to keep it lighter. You may not need dependency injection, an ORM, or a third-party module.
-
-But you still need to keep it organized.
-
-FastCFML guardrails your code using an MVC pattern (Model View Controller), while keeping overhead as low as possible.
-
-This makes it faster to write, and faster to run.
+Uses a simple JavaScript pushState function to load pages without refresh.
 
 
-## The inspiration
+## What can you build?
 
-There are a lot of brilliant software engineers in the world, many of whom use CFML, but the one project that caught my eye was FastAPI by Sebastián Ramírez Montaño.
-
-And yes, I would assume Sebastián probably does not write CFML at all, as he is a Python developer.
-
-He compiled the best tools and methods from other solutions into a product designed to build fast APIs. He wasn't trying to reinvent the wheel, he just wanted a tool to build stuff he was working on.
-
-So in a way, I'm trying to do the same thing: create a tool I can use to build CFML apps faster, that run faster.
-
-
-## Where will this lead?
-
-Maybe nowhere considering most new development is written in Python, Node, Ruby, and other languages. Which, by the way, are all great languages.
-
-CFML, on the other hand, is a batteries included scripting language that runs on top of Java, and is very easy to learn. As a dev, you don't compile or build the code, it compiles into Java bytecode at runtime. All you have to do is write the code, and refresh the browser. Pretty simple.
-
-When I say "batteries included," it includes baked in goodies such as HTTP, encryption, a web server, cookies, and much more. You don't need a package manager such as PIP or NPM.
-
-I look at it this way, if people are interested in this approach, great. If not that is perfectly fine.
-
-If nothing else, I hope it shows there are alternatives to building apps, everything here is free open source.
-
-
-
-## Requirements
-
-A CFML runtime such as Lucee, Adobe ColdFusion, or BoxLang.
-
-A URL rewrite that passes all requests to the main index.cfm file.
-
-For example: `RewriteRule ^/(.*)$ /index.cfm/$1 [L];`
+- Websites
+- APIs
+- Blogs
+- Microservices
 
 
 ## How to run
 
-The simplest way is using CommandBox by Ortus. It gives you an option to set url rewrite to true.
+Clone project to your desktop
+
+```
+cd desktop
+
+git clone https://github.com/noursecode/FastCFML.git
+
+cd fastcfml
+```
+
+
+With CommandBox installed, start server
+```
+server start
+```
+
+
+View app in browser
+```
+http://localhost:3000
+```
 
 
 ## Structure
@@ -67,101 +45,131 @@ The simplest way is using CommandBox by Ortus. It gives you an option to set url
 ```
 FastCFML
     │
-    ├── Application.cfc		# the framework
+    ├── Application.cfc      # the framework
     │
-    ├── index.cfm			# the router with controllers
+    ├── index.cfm            # the router
     │
-    ├── models				# data from databases, business logic, API connections
+    ├── controllers          # one function per controller
+    │   ├── controller1.cfc		
+    │   └── controller2.cfc
+    │
+    ├── models               # data from databases, business logic, API connections
     │   ├── model1.cfc		
     │   └── model2.cfc
     │
-    ├── views				# html snippets
+    ├── views                # html snippets
     │   ├── view1.cfm
     │   └── view2.cfm
     │
-    └── layouts				# html header/footer with css and client javascript
+    └── layouts              # html header/footer with css and client javascript
         ├── layout1.cfm
         └── layout2.cfm
+        
 ```
 
-## FastCFML Routing
 
-The index.cfm file becomes the main router, each route includes a request verb and action, for example GET/hello
-
-Routing also includes two utility functions for more complicated routes.
-
-1. get_urlpath(2) finds segments in the URL path. For example finding "12345" in /books/12345
-
-2. get_urlparam('name') finds URL parameters, for example finding "Bob" in /items/id?name=Bob
-
-
-## FastCFML Controllers
-
-For simple apps, each route in the index.cfm file is also a controller. For larger apps, controllers can be in separate files.
-
-Here is an example:
+## Example router (index.cfm)
 
 ```
-GET/items
-data = new models.items().main(req);
-body = include_view("/items.cfm");
-include_layout("/main.cfm");
+<cfscript>
+	home = new controllers.home();
+	hello = new controllers.hello();
+	about = new controllers.about();
+
+	switch(route){
+
+		case "GET/":
+		    home.main();
+		    break;
+
+		case "GET/hello":
+			request.name = get_urlpath(2);
+			hello.main(request.name);
+			break;
+
+		case "GET/about":
+			about.main();
+			break;
+
+		default:
+		    home.main();
+		    break;
+
+	};
+
+</cfscript>
 ```
 
-- Line 1: Isolates the controller based on verb and action (or resource if you prefer)
-- Line 2: Calls the model function (a CFC file)
-- Line 3: Inludes a view template that accepts data from the model as an object (structure)
-- Line 4: Includes a layout template that returns the page to the client (browser)
 
-The REQ variable accepted by the model is a request object that contains headers, form variables, etc.
+## Example controller (controllers/home.cfc)
 
-
-## FastCFML Models
-
-Each model is a CFC component called from the controller. For example: data = new models.home().main()
-
-In this case "home.cfc" is the component, and "main" is the method being called.
-
-Think of a component as a class of methods, but does not have to be object-oriented. It can simply be a group of related functions.
-
-The model's job is to create a structure, and return it to the view.
-
-However if building an API, the structure is returned directly to the client as either JSON, JSON-RPC, or XML
-
-
-## FastCFML Views
-
-Views are HTML that can be included in each controller. For example: body = include_view("/home.cfm")
-
-The view accepts structure data from the model using a data scope, for example data.title, data.users, data.address etc.
-
-To make it work, all content in a view must be inside `<CFOUTPUT>` tags.
-
-Finally, the view is returned as a variable named body.
+```
+component{
+	
+	function main() {
+		data = new models.home().main();
+		
+		savecontent variable="body"{
+			include "/views/home.cfm";
+		}
+		
+		savecontent variable="layout"{
+			include "/layouts/main.cfm";
+		}
+		
+		return writeoutput(layout);
+	}
+	
+}
+```
 
 
-## FastCFML Layouts
-
-Layouts are also HTML, and can be included in each controller. For example: include_layout("/main.cfm");
-
-The layout accepts the body variable from the view as well as meta data.
-
-All content in a layout must be inside `<CFOUTPUT>` tags.
-
-Finally, the layout is returned to the client.
+## Example model (models/home.cfc)
 
 
-## JSON output
-
-FastCFML includes a utility function that converts a JSON object to a string, then outputs to the browser:
-
-json(data)
-
-
-## Reactive
-
-JavaScript (similar to HTMX) prevents default click events. This loads each page into the dom without a refresh.
-
-JavaScript can be also used for form posts, searching, and more, but the framework only provides the bare necessities.
+```
+component{
+	function main() {
+		return "Hello World!"
+	}
+}
+```
 
 
+## Example view (views/home.cfm)
+
+```
+<cfoutput>
+	<h1>#data.title#</h1>
+	<p>This is the HOME page</p>
+</cfoutput>
+```
+
+
+## Example layout (layouts/main.cfm)
+```
+<cfoutput><!doctype html>
+<html class="no-js" lang="">
+<head>
+<title>#metatitle#</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<link rel="stylesheet" media="screen" href="/assets/css/main.css">
+</head>
+<body>
+<bd>
+<nav>
+    <a href="/">HOME</a>
+    <a href="/hello">HELLO</a>
+    <a href="/about">ABOUT</a>
+</nav>
+<div class="container">
+#body#
+</div>
+<footer>&copy; #year(now())# FastCFML</footer>
+</bd>
+<script src="/assets/js/main.js"></script>
+</body>
+</html></cfoutput>
+```

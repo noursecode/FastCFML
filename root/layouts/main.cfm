@@ -5,22 +5,22 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8"/>
-<link rel="stylesheet" media="screen" href="#root#/assets/css/main.css">
+<link rel="stylesheet" media="screen" href="/assets/css/main.css">
 <style>
 </style>
 </head>
 <body>
 <bd>
 <nav>
-    <a href="#root#/">Home</a>
-    <a href="#root#/hello">Hello</a>
-    <a href="#root#/jsontest" id="ex">JSON test</a>
+    <a href="/">HOME</a>
+    <a href="/hello">HELLO</a>
+    <a href="/about">ABOUT</a>
 </nav>
 <div class="container">
 #body#
 </div>
 <footer>&copy; #year(now())# FastCFML</footer>
 </bd>
-<script src="#root#/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html></cfoutput>
