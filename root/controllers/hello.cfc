@@ -1,6 +1,8 @@
 component{
 	
-	function main(name) {
+	function show() {
+		
+		name = get_urlpath(2);
 		
 		data = new models.hello().main(name);
 		
@@ -13,6 +15,16 @@ component{
 		};
 		
 		return writeoutput(layout);
+	}
+
+
+
+	function get_urlpath(id){
+		if( listlen(cgi.path_info,"/") >= id ){
+			return listgetat( cgi.path_info, id, "/" );
+		} else {
+			return "";
+		};
 	}
 	
 }

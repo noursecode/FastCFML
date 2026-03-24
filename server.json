@@ -1,24 +1,11 @@
 {
     "name":"FastCFML",
-    "openBrowser":true,
-    "dockEnable":true,
-    "trayEnable":true,
-    "debug":false,
-    "trace":false,
-    "console":false,
-    "profile":"dev",
-    "env":{},
-    "jvm":{
-        "heapSize":512,
-        "minHeapSize":256
-    },
+    "debug":true,
     "web":{
         "host":"localhost",
         "webroot":"root",
         "blockCFAdmin":false,
         "directoryBrowsing":true,
-        "accessLogEnable":true,
-        "maxRequests":30,
         "gzipEnable":true,
         "bindings":{
             "HTTP":{

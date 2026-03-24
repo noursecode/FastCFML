@@ -1,6 +1,6 @@
 component{
 	
-	function main() {
+	function show() {
 		
 		data = new models.about().main();
 		

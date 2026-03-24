@@ -5,22 +5,13 @@
 
 	switch(route){
 
-		case "GET/":
-		    home.main();
-		    break;
+		case "GET/": home.show(); break;
 
-		case "GET/hello":
-			request.name = get_urlpath(2);
-			hello.main(request.name);
-			break;
+		case "GET/hello": hello.show(); break;
 
-		case "GET/about":
-			about.main();
-			break;
+		case "GET/about": about.show(); break;
 
-		default:
-		    home.main();
-		    break;
+		default: home.show(); break;
 
 	};
 

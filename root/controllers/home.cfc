@@ -1,6 +1,6 @@
 component{
 	
-	function main() {
+	function show() {
 		data = new models.home().main();
 		
 		savecontent variable="body"{
